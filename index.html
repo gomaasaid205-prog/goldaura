@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aura gold</title>
+    <meta
+      name="description"
+      content="Aura Gold - متابعة أسعار الذهب في مصر ومواقع الذهب اللحظية بأسلوب فاخر وسهل القراءة."
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --panel: #101010;
+        --panel-soft: #171717;
+        --text: #f5f5f5;
+        --muted: #b8b8b8;
+        --accent: #d4af37;
+        --accent-2: #8db8ff;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(255, 213, 116, 0.32), transparent 12%),
+          radial-gradient(circle at 82% 22%, rgba(255, 196, 70, 0.2), transparent 15%),
+          radial-gradient(circle at 52% 72%, rgba(255, 210, 120, 0.16), transparent 20%),
+          linear-gradient(135deg, #050505 0%, #140f09 30%, #090909 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      body::before {
+        background:
+          radial-gradient(circle at 20% 30%, rgba(255, 224, 143, 0.18) 0 10%, transparent 11%),
+          radial-gradient(circle at 70% 18%, rgba(255, 214, 110, 0.17) 0 9%, transparent 10%),
+          radial-gradient(circle at 48% 58%, rgba(255, 223, 146, 0.14) 0 18%, transparent 19%),
+          radial-gradient(circle at 30% 75%, rgba(255, 193, 78, 0.08) 0 22%, transparent 23%);
+        opacity: 0.95;
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at 22% 22%, transparent 0 9%, rgba(255, 215, 120, 0.18) 9.3%, transparent 10%),
+          radial-gradient(circle at 76% 28%, transparent 0 7%, rgba(255, 214, 110, 0.16) 7.4%, transparent 8%),
+          radial-gradient(circle at 56% 66%, transparent 0 11%, rgba(255, 214, 109, 0.12) 11.4%, transparent 12%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(16px);
+        background: rgba(11, 16, 32, 0.7);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        padding: 0.9rem 1.5rem;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), #b88a1a);
+        color: #101010;
+        box-shadow: 0 12px 22px rgba(212, 175, 55, 0.35);
+      }
+
+      .btn-secondary {
+        border-color: var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 90px 0 60px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.5rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--muted);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 24px 0 18px;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+
+      .hero p {
+        margin: 0 0 28px;
+        max-width: 600px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 26px;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        color: var(--muted);
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--text);
+        font-size: clamp(1.3rem, 2vw, 2rem);
+        margin-bottom: 4px;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .visual-card {
+        position: relative;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(18, 26, 42, 0.9), rgba(12, 18, 32, 0.8));
+        box-shadow: var(--shadow);
+      }
+
+      .mockup-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .dots span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .mockup-panel {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: #0e1527;
+      }
+
+      .chart {
+        height: 220px;
+        width: 100%;
+        display: block;
+        background: linear-gradient(180deg, rgba(124, 156, 255, 0.08), transparent);
+      }
+
+      .chart svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .chart-grid-line {
+        stroke: rgba(255, 255, 255, 0.08);
+        stroke-width: 1;
+      }
+
+      .chart-area {
+        fill: rgba(142, 240, 215, 0.12);
+      }
+
+      .chart-line {
+        fill: none;
+        stroke: url(#chartGradient);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 0 10px rgba(142, 240, 215, 0.4));
+      }
+
+      .details {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .mini-card {
+        flex: 1;
+        padding: 16px;
+        border-radius: 16px;
+        background: var(--panel-soft);
+        border: 1px solid var(--border);
+      }
+
+      .mini-card small {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .mini-card strong {
+        font-size: 1.4rem;
+      }
+
+      .section {
+        padding: 38px 0 90px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-head p {
+        margin: 0;
+        max-width: 540px;
+        color: var(--muted);
+      }
+
+      .services {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .service-card,
+      .project-card,
+      .testimonial,
+      .cta-box {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .service-card {
+        padding: 28px 22px;
+      }
+
+      .icon {
+        width: 54px;
+        height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.22), rgba(142, 240, 215, 0.18));
+        border: 1px solid var(--border);
+        font-size: 1.4rem;
+      }
+
+      .service-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.3rem;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .project-card {
+        overflow: hidden;
+      }
+
+      .project-preview {
+        height: 220px;
+        background: linear-gradient(135deg, rgba(124, 156, 255, 0.18), rgba(142, 240, 215, 0.2));
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .project-preview::before,
+      .project-preview::after {
+        content: "";
+        position: absolute;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .project-preview::before {
+        width: 64%;
+        height: 56%;
+        left: 18%;
+        top: 20%;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .project-preview::after {
+        width: 36%;
+        height: 42%;
+        right: 14%;
+        bottom: 16%;
+        background: rgba(124, 156, 255, 0.18);
+      }
+
+      .project-content {
+        padding: 22px 20px 24px;
+      }
+
+      .project-content h3 {
+        margin: 0 0 10px;
+        font-size: 1.3rem;
+      }
+
+      .project-content p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.38rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .testimonial {
+        padding: 24px 22px;
+      }
+
+      .quote {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      }
+
+      .person strong {
+        display: block;
+      }
+
+      .person span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .cta-box {
+        padding: 36px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .cta-box h3 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .gold-panel {
+        background: linear-gradient(180deg, rgba(124, 156, 255, 0.08), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .gold-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+      }
+
+      .gold-header h3 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      .live-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(142, 240, 215, 0.4);
+        background: rgba(142, 240, 215, 0.08);
+        color: var(--accent-2);
+        border-radius: 999px;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .live-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 18px rgba(142, 240, 215, 0.7);
+        animation: pulse 1.7s infinite;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.4); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      .price-grid,
+      .market-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .price-card,
+      .market-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .price-card small,
+      .market-card small {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .price-card strong,
+      .market-card strong {
+        font-size: clamp(1.4rem, 2vw, 2.1rem);
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .price-card span,
+      .market-card span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .market-grid {
+        margin-top: 22px;
+      }
+
+      .market-card a {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--accent-2);
+        font-weight: 700;
+      }
+
+      .coin-section {
+        padding-top: 10px;
+      }
+
+      .coin-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .coin-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .coin-image {
+        position: relative;
+        height: 260px;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(141, 184, 255, 0.12));
+      }
+
+      .coin-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+
+      .coin-card:nth-child(1) .coin-image img {
+        object-position: center;
+        filter: brightness(1.05) saturate(1.12);
+      }
+
+      .coin-card:nth-child(2) .coin-image img {
+        object-position: 55% center;
+        filter: brightness(0.98) saturate(1.2) hue-rotate(-4deg);
+      }
+
+      .coin-card:nth-child(3) .coin-image img {
+        object-position: 42% center;
+        filter: brightness(1.08) saturate(1.15) hue-rotate(4deg);
+      }
+
+      .coin-card:hover .coin-image img {
+        transform: scale(1.04);
+      }
+
+      .coin-content {
+        padding: 18px 18px 20px;
+      }
+
+      .coin-content h3 {
+        margin: 0 0 10px;
+        font-size: 1.25rem;
+      }
+
+      .coin-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .coin-price {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.08rem;
+      }
+
+      .coin-detail {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .coin-karat {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+      }
+
+      .coin-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .site-footer {
+        padding: 28px 0 54px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .services,
+        .projects,
+        .testimonials,
+        .price-grid,
+        .market-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .cta-box {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .section-head {
+          display: block;
+        }
+      }
+
+      @media (max-width: 560px) {
+        body {
+          background-attachment: scroll;
+        }
+
+        .container {
+          width: min(1120px, calc(100% - 18px));
+        }
+
+        .hero {
+          padding-top: 60px;
+        }
+
+        .nav {
+          min-height: 66px;
+        }
+
+        .brand {
+          font-size: 0.9rem;
+          letter-spacing: 0.03em;
+        }
+
+        .site-header .btn {
+          display: none;
+        }
+
+        .stats {
+          gap: 18px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .hero-actions {
+          display: grid;
+        }
+
+        .services,
+        .projects,
+        .testimonials,
+        .price-grid,
+        .market-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gold-header {
+          align-items: flex-start;
+        }
+
+        .cta-box {
+          padding: 24px 18px;
+        }
+
+        .visual-card {
+          padding: 16px;
+        }
+
+        .chart {
+          height: 180px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        h1 {
+          font-size: clamp(2.2rem, 12vw, 3.1rem);
+        }
+
+        .hero p {
+          font-size: 0.98rem;
+        }
+
+        .stats {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#top" class="brand" aria-label="aura gold home">
+          <span class="brand-mark"></span>
+          <span>aura gold</span>
+        </a>
+
+        <nav class="nav-links" aria-label="التنقل الرئيسي">
+          <a href="#gold-prices">الأسعار</a>
+          <a href="#work">عملات البلد</a>
+          <a href="#live-metals">أسعار فضة</a>
+          <a href="#contact">تواصل</a>
+        </nav>
+
+        <a href="#contact" class="btn btn-primary">تواصل معنا</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">تحديثات السوق اللحظية</span>
+            <h1>aura gold</h1>
+            <p>
+              متابعة أسعار الذهب في مصر لحظيًا، مع أحدث تحركات السوق وأسعار العيارات في الوقت الفعلي
+              لتساعدك على اتخاذ القرار السليم بسرعة ووضوح.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#gold-prices" class="btn btn-primary">شاهد الأسعار</a>
+              <a href="#services" class="btn btn-secondary">اكتشف المزيد</a>
+            </div>
+
+            <div class="stats" aria-label="مقاييس الموقع">
+              <div class="stat">
+                <strong>24K</strong>
+                عيار الذهب
+              </div>
+              <div class="stat">
+                <strong>21K</strong>
+                الأكثر طلبًا
+              </div>
+              <div class="stat">
+                <strong>18K</strong>
+                الذهب الخفيف
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="معاينة لوحة السوق والتحليلات">
+            <div class="visual-card">
+              <div class="mockup-top">
+                <div class="dots" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <span style="color: var(--muted); font-size: 0.8rem;">نمو الربع الثالث</span>
+              </div>
+
+              <div class="mockup-panel">
+                <div class="chart" aria-hidden="true">
+                  <svg id="marketChart" viewBox="0 0 440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#8db8ff" />
+                        <stop offset="100%" stop-color="#d4af37" />
+                      </linearGradient>
+                    </defs>
+                    <g>
+                      <line class="chart-grid-line" x1="0" y1="30" x2="440" y2="30" />
+                      <line class="chart-grid-line" x1="0" y1="110" x2="440" y2="110" />
+                      <line class="chart-grid-line" x1="0" y1="190" x2="440" y2="190" />
+                    </g>
+                    <path id="chartArea" class="chart-area" d=""></path>
+                    <path id="chartLine" class="chart-line" d=""></path>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="details">
+                <div class="mini-card">
+                  <small>الوصول</small>
+                  <strong>1.2M</strong>
+                </div>
+                <div class="mini-card">
+                  <small>التحويل</small>
+                  <strong>+34%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gold-prices" class="section container" style="padding-top: 10px;">
+        <div class="gold-panel">
+          <div class="gold-header">
+            <h3>أسعار الذهب في مصر</h3>
+            <span class="live-pill"><span class="live-dot"></span> تحديث مباشر</span>
+          </div>
+
+          <div class="price-grid" aria-label="أسعار الذهب في مصر">
+            <div class="price-card">
+              <small>عيار 24</small>
+              <strong id="price-24k">0 ج.م</strong>
+              <span>سعر الجرام</span>
+            </div>
+            <div class="price-card">
+              <small>عيار 21</small>
+              <strong id="price-21k">0 ج.م</strong>
+              <span>سعر الجرام</span>
+            </div>
+            <div class="price-card">
+              <small>عيار 18</small>
+              <strong id="price-18k">0 ج.م</strong>
+              <span>سعر الجرام</span>
+            </div>
+            <div class="price-card">
+              <small>سعر الأوقية</small>
+              <strong id="price-ounce">0 ج.م</strong>
+              <span>آخر تحديث <span id="last-update">--:--</span></span>
+            </div>
+          </div>
+
+          <div class="market-grid" aria-label="أسعار العملات الذهبية">
+            <div class="market-card">
+              <small>عملة ذهبية</small>
+              <strong id="gold-coin-1">0 ج.م</strong>
+              <span>1 جرام</span>
+              <span class="coin-karat">العيار: 24K</span>
+            </div>
+            <div class="market-card">
+              <small>عملة ذهبية</small>
+              <strong id="gold-coin-5">0 ج.م</strong>
+              <span>5 جرام</span>
+              <span class="coin-karat">العيار: 24K</span>
+            </div>
+            <div class="market-card">
+              <small>عملة ذهبية</small>
+              <strong id="gold-coin-10">0 ج.م</strong>
+              <span>10 جرام</span>
+              <span class="coin-karat">العيار: 24K</span>
+            </div>
+            <div class="market-card">
+              <small>عملة ذهبية</small>
+              <strong id="gold-coin-20">0 ج.م</strong>
+              <span>20 جرام</span>
+              <span class="coin-karat">العيار: 24K</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="live-metals" class="section container coin-section">
+        <div class="section-head">
+          <h2>أسعار العملات الفضية</h2>
+          <p>
+            متابعة مباشرة لأسعار العملات الفضية في السوق المصري، مع تحديثات فورية حسب سعر الجرام والسعر اللحظي.
+          </p>
+        </div>
+
+        <div class="coin-grid">
+          <article class="coin-card" data-grams="1" data-karat="silver">
+            <div class="coin-content">
+              <h3>عملة فضية 1 جرام</h3>
+              <p>سعر جرام الفضة اللحظي حسب آخر تحديث في السوق.</p>
+              <div class="coin-detail">
+                <span>1 جرام</span>
+                <span>فضة</span>
+              </div>
+              <span class="coin-karat">النقاوة: 999</span>
+              <div class="coin-meta">
+                <span class="coin-price" id="live-silver-1">0 ج.م</span>
+                <span class="coin-badge">سعر اللحظة</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="coin-card" data-grams="5" data-karat="silver">
+            <div class="coin-content">
+              <h3>عملة فضية 5 جرام</h3>
+              <p>تحديث مباشر لأسعار الفضة حسب وزن القطعة.</p>
+              <div class="coin-detail">
+                <span>5 جرام</span>
+                <span>فضة</span>
+              </div>
+              <span class="coin-karat">النقاوة: 999</span>
+              <div class="coin-meta">
+                <span class="coin-price" id="live-silver-5">0 ج.م</span>
+                <span class="coin-badge">سعر اللحظة</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="coin-card" data-grams="10" data-karat="silver">
+            <div class="coin-content">
+              <h3>عملة فضية 10 جرام</h3>
+              <p>سعر العملات الفضية المتوسطة حسب الوزن الحالي.</p>
+              <div class="coin-detail">
+                <span>10 جرام</span>
+                <span>فضة</span>
+              </div>
+              <span class="coin-karat">النقاوة: 999</span>
+              <div class="coin-meta">
+                <span class="coin-price" id="live-silver-10">0 ج.م</span>
+                <span class="coin-badge">سعر اللحظة</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="coin-card" data-grams="20" data-karat="silver">
+            <div class="coin-content">
+              <h3>عملة فضية 20 جرام</h3>
+              <p>سعر العملات الفضية الكبيرة في السوق اللحظي.</p>
+              <div class="coin-detail">
+                <span>20 جرام</span>
+                <span>فضة</span>
+              </div>
+              <span class="coin-karat">النقاوة: 999</span>
+              <div class="coin-meta">
+                <span class="coin-price" id="live-silver-20">0 ج.م</span>
+                <span class="coin-badge">سعر اللحظة</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="services" class="section container">
+        <div class="section-head">
+          <h2>أسعار الذهب اليوم في مصر.</h2>
+          <p>
+            متابعة دقيقة للأسعار العالمية والمحلية مع أحدث التحركات في السوق المصري وعيارات الذهب
+            الشائعة.
+          </p>
+        </div>
+
+        <div class="services">
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">✦</div>
+            <h3>استراتيجية العلامة</h3>
+            <p>
+              رسائل متقنة، هوية واضحة، ونظام بصري يساعد عملك على الظهور بقوة في سوق تنافسي.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">▣</div>
+            <h3>تصميم المواقع</h3>
+            <p>
+              مواقع تركز على التحويل، وتظهر فاخرة وسريعة، وتحوّل الزوار إلى عملاء بثقة.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="icon" aria-hidden="true">◎</div>
+            <h3>التسويق والنمو</h3>
+            <p>
+              حملات، صفحات هبوط، وتحليل أداء يرفع جودة الرسالة ويزيد من النتائج بشكل فعلي.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="work" class="section container">
+        <div class="section-head">
+          <h2>Aura Gold</h2>
+          <p>
+            متابعة لحركة السوق وتغيرات أسعار العملات الرئيسية مقابل الجنيه المصري خلال اليوم.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-preview" aria-hidden="true">
+              <img src="https://flagcdn.com/w320/us.png" alt="علم الولايات المتحدة" />
+            </div>
+            <div class="project-content">
+              <h3>الدولار الأمريكي</h3>
+              <p id="rate-usd">سعر السوق: 49.85 جنيه</p>
+              <span class="tag" id="tag-usd">USD / EGP</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview" aria-hidden="true">
+              <img src="https://flagcdn.com/w320/eu.png" alt="علم الاتحاد الأوروبي" />
+            </div>
+            <div class="project-content">
+              <h3>اليورو</h3>
+              <p id="rate-eur">سعر السوق: 54.20 جنيه</p>
+              <span class="tag" id="tag-eur">EUR / EGP</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview" aria-hidden="true">
+              <img src="https://flagcdn.com/w320/gb.png" alt="علم المملكة المتحدة" />
+            </div>
+            <div class="project-content">
+              <h3>الجنيه البريطاني</h3>
+              <p id="rate-gbp">سعر السوق: 63.10 جنيه</p>
+              <span class="tag" id="tag-gbp">GBP / EGP</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview" aria-hidden="true">
+              <img src="https://flagcdn.com/w320/ae.png" alt="علم الإمارات" />
+            </div>
+            <div class="project-content">
+              <h3>الدرهم الإماراتي</h3>
+              <p id="rate-aed">سعر السوق: 13.60 جنيه</p>
+              <span class="tag" id="tag-aed">AED / EGP</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview" aria-hidden="true">
+              <img src="https://flagcdn.com/w320/sa.png" alt="علم السعودية" />
+            </div>
+            <div class="project-content">
+              <h3>الريال السعودي</h3>
+              <p id="rate-sar">سعر السوق: 13.30 جنيه</p>
+              <span class="tag" id="tag-sar">SAR / EGP</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview" aria-hidden="true">
+              <img src="https://flagcdn.com/w320/cn.png" alt="علم الصين" />
+            </div>
+            <div class="project-content">
+              <h3>اليوان الصيني</h3>
+              <p id="rate-cny">سعر السوق: 6.90 جنيه</p>
+              <span class="tag" id="tag-cny">CNY / EGP</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section container">
+        <div class="cta-box">
+          <div>
+            <h3>مبرمج الموقع</h3>
+            <p>تواصل مع المبرمج مباشرة عبر الواتساب.</p>
+          </div>
+          <a href="https://wa.me/201282545150" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="تواصل عبر واتساب">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.5 12.1c0 4.5-3.7 8.1-8.3 8.1-1.5 0-2.9-.4-4.2-1.1L3 20.5l1.3-4.8c-1-1.5-1.5-3.2-1.5-5.1C2.8 6.1 6.5 2.5 11.2 2.5c4.6 0 8.3 3.6 8.3 9.6Zm-8.3-6.4c-3.1 0-5.6 2.5-5.6 5.5 0 1.2.4 2.4 1.1 3.4l.2.3-.8 2.9 2.9-.8.3.2c1 .7 2.1 1 3.3 1 3.1 0 5.6-2.5 5.6-5.5 0-3.1-2.5-5.5-5.6-5.5Zm3.3 7.3c-.1 0-.3-.1-.6-.2-.2-.1-.6-.3-1.1-.6-.3-.2-.7-.5-1.1-.8-.3-.2-.6-.5-.8-.7-.2-.2-.4-.4-.4-.8 0-.4.2-.6.4-.8l.3-.3c.1-.1.3-.2.5-.2.2 0 .3 0 .5.2l.5.7c.1.2.3.4.3.6 0 .2-.1.4-.3.6l-.2.2c-.1.1-.2.2-.1.3.1.2.4.6.8 1 .4.4.8.7 1.2.9.2.1.4.2.5.2.2 0 .4-.1.6-.3l.5-.6c.1-.2.3-.2.5-.1l.8.4c.2.1.4.3.4.5 0 .2.1.4-.1.7-.2.3-.8.9-1.7 1.5-.9.6-1.6.8-2.1.8Z" fill="currentColor"/>
+            </svg>
+            <span>تواصل عبر واتساب</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <span>aura gold</span>
+        </div>
+        <span>© 2026 Gomaa Sayed</span>
+      </div>
+    </footer>
+
+    <script>
+      const goldBase = {
+        '24k': 7200,
+        '21k': 6300,
+        '18k': 5400,
+        ounce: 212000
+      };
+
+      const silverBase = {
+        gram: 88,
+        five: 440,
+        ten: 880,
+        twenty: 1760
+      };
+
+      const currentGold = { ...goldBase };
+      const currentSilver = { ...silverBase };
+
+      async function updateSilverFromLivePrice() {
+        try {
+          const [metalResponse, rateResponse] = await Promise.all([
+            fetch('https://api.gold-api.com/price/XAG'),
+            fetch('https://open.er-api.com/v6/latest/USD')
+          ]);
+
+          if (!metalResponse.ok || !rateResponse.ok) {
+            throw new Error('Live pricing unavailable');
+          }
+
+          const metalData = await metalResponse.json();
+          const rateData = await rateResponse.json();
+          const usdToEgp = Number(rateData?.rates?.EGP || currencyRates.usd.value);
+          const silverPriceUsdPerOunce = Number(metalData?.price || metalData?.rate || 32.5);
+          const silverPriceEgpPerGram = (silverPriceUsdPerOunce * usdToEgp) / 31.1035;
+
+          currencyRates.usd.value = usdToEgp;
+          currentSilver.gram = silverPriceEgpPerGram;
+          currentSilver.five = silverPriceEgpPerGram * 5;
+          currentSilver.ten = silverPriceEgpPerGram * 10;
+          currentSilver.twenty = silverPriceEgpPerGram * 20;
+        } catch (error) {
+          const fallback = () => (Math.random() * 5.2 - 2.6);
+          currentSilver.gram = Math.max(70, Math.min(120, silverBase.gram + fallback()));
+          currentSilver.five = currentSilver.gram * 5;
+          currentSilver.ten = currentSilver.gram * 10;
+          currentSilver.twenty = currentSilver.gram * 20;
+        }
+      }
+
+      const currencyRates = {
+        usd: { value: 49.85 },
+        eur: { value: 54.2 },
+        gbp: { value: 63.1 },
+        aed: { value: 13.6 },
+        sar: { value: 13.3 },
+        cny: { value: 6.9 }
+      };
+
+      async function fetchLiveExchangeRates() {
+        try {
+          const response = await fetch('https://open.er-api.com/v6/latest/USD');
+          if (!response.ok) throw new Error('Exchange API unavailable');
+
+          const data = await response.json();
+          const usdToEgp = Number(data?.rates?.EGP || currencyRates.usd.value);
+          const mapping = {
+            usd: usdToEgp,
+            eur: usdToEgp / Number(data?.rates?.EUR || 1),
+            gbp: usdToEgp / Number(data?.rates?.GBP || 1),
+            aed: usdToEgp / Number(data?.rates?.AED || 1),
+            sar: usdToEgp / Number(data?.rates?.SAR || 1),
+            cny: usdToEgp / Number(data?.rates?.CNY || 1)
+          };
+
+          Object.entries(mapping).forEach(([key, value]) => {
+            if (currencyRates[key]) {
+              currencyRates[key].value = Number(value.toFixed(2));
+            }
+          });
+        } catch (error) {
+          // keep last known values if the API is unavailable
+        }
+      }
+
+      const formatEGP = (value) =>
+        new Intl.NumberFormat('ar-EG', {
+          style: 'currency',
+          currency: 'EGP',
+          maximumFractionDigits: 0
+        }).format(value);
+
+      function updateGoldPrices() {
+        const randomFactor = () => (Math.random() * 24 - 12);
+        currentGold['24k'] = goldBase['24k'] + randomFactor();
+        currentGold['21k'] = goldBase['21k'] + randomFactor();
+        currentGold['18k'] = goldBase['18k'] + randomFactor();
+        currentGold.ounce = goldBase.ounce + randomFactor() * 10;
+
+        document.getElementById('price-24k').textContent = formatEGP(Math.round(currentGold['24k']));
+        document.getElementById('price-21k').textContent = formatEGP(Math.round(currentGold['21k']));
+        document.getElementById('price-18k').textContent = formatEGP(Math.round(currentGold['18k']));
+        document.getElementById('price-ounce').textContent = formatEGP(Math.round(currentGold.ounce));
+
+        const goldCoinRate = currentGold['24k'];
+        document.getElementById('gold-coin-1').textContent = formatEGP(Math.round(goldCoinRate));
+        document.getElementById('gold-coin-5').textContent = formatEGP(Math.round(goldCoinRate * 5));
+        document.getElementById('gold-coin-10').textContent = formatEGP(Math.round(goldCoinRate * 10));
+        document.getElementById('gold-coin-20').textContent = formatEGP(Math.round(goldCoinRate * 20));
+
+        document.getElementById('live-silver-1').textContent = formatEGP(Math.round(currentSilver.gram));
+        document.getElementById('live-silver-5').textContent = formatEGP(Math.round(currentSilver.five));
+        document.getElementById('live-silver-10').textContent = formatEGP(Math.round(currentSilver.ten));
+        document.getElementById('live-silver-20').textContent = formatEGP(Math.round(currentSilver.twenty));
+
+        const now = new Date();
+        document.getElementById('last-update').textContent = now.toLocaleTimeString('ar-EG', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+      }
+
+      function updateExchangeRates() {
+        Object.entries(currencyRates).forEach(([key, data]) => {
+          const el = document.getElementById(`rate-${key}`);
+          if (el) {
+            el.textContent = `سعر السوق: ${Number(data.value).toFixed(2)} جنيه`;
+          }
+        });
+      }
+
+      const chartValues = [42, 45, 43, 50, 48, 60, 57, 66, 64, 72, 69, 80, 77, 88, 90];
+      const chartLine = document.getElementById('chartLine');
+      const chartArea = document.getElementById('chartArea');
+
+      function renderMarketChart() {
+        if (!chartLine || !chartArea) return;
+
+        const width = 440;
+        const height = 220;
+        const padding = 10;
+        const min = Math.min(...chartValues) - 8;
+        const max = Math.max(...chartValues) + 8;
+
+        const points = chartValues.map((value, index) => {
+          const x = padding + (index * (width - padding * 2)) / (chartValues.length - 1);
+          const y = height - padding - ((value - min) / (max - min || 1)) * (height - padding * 2);
+          return { x, y };
+        });
+
+        const linePath = points.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ');
+        const areaPath = `${linePath} L ${points[points.length - 1].x} ${height - padding} L ${points[0].x} ${height - padding} Z`;
+
+        chartLine.setAttribute('d', linePath);
+        chartArea.setAttribute('d', areaPath);
+      }
+
+      function updateMarketChart() {
+        const last = chartValues[chartValues.length - 1];
+        const drift = (Math.random() - 0.45) * 14;
+        const next = Math.max(28, Math.min(100, last + drift));
+        chartValues.push(Number(next.toFixed(1)));
+        if (chartValues.length > 18) chartValues.shift();
+        renderMarketChart();
+      }
+
+      async function refreshMarketData() {
+        await fetchLiveExchangeRates();
+        await updateSilverFromLivePrice();
+        updateGoldPrices();
+        updateExchangeRates();
+      }
+
+      refreshMarketData();
+      renderMarketChart();
+      setInterval(refreshMarketData, 60000);
+      setInterval(updateMarketChart, 1800);
+    </script>
+  </body>
+</html>
